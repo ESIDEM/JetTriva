@@ -17,10 +17,6 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideQuestionRepo(questionsApi: QuestionsApi): QuestionRepository = QuestionRepository(questionsApi)
-
-    @Singleton
-    @Provides
     fun provideQuestionApi(): QuestionsApi {
 
         return Retrofit.Builder()
@@ -29,4 +25,8 @@ object AppModule {
             .build()
             .create(QuestionsApi::class.java)
     }
+
+    @Singleton
+    @Provides
+    fun provideQuestionRepo(questionsApi: QuestionsApi): QuestionRepository = QuestionRepository(questionsApi)
 }
